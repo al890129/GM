@@ -1,8 +1,15 @@
+header {
+	margin: 0 29% auto 29%;
+    background-color: #3d0080;
+    font-family: monospace;
+    font-size: 34px;
+    padding: 10px 0 10px 16px;
+    color: #fff;
+}
 form {
-	margin: 5% 29% auto 29%;
+	margin: 0 29% auto 29%;
     border: 2px solid #00c4ff;
     padding: 40px;
-    border-radius: 2%;
     .form-group {
 		.required {
 			&:after {
@@ -10,6 +17,9 @@ form {
 				color: red;
 			}
     	}
+	}
+	.alert-danger {
+		margin-top: -15px;
 	}
 }
 
