@@ -12,4 +12,9 @@ customers
 
 		$uibModalInstance.dismiss('cancel');
   	}
+
+  	$scope.createAnotherCustomer = function() {
+  		$uibModalInstance.dismiss('cancel');
+  		document.getElementById('customerForm').reset();
+  	}
 });

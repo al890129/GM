@@ -8,7 +8,6 @@ customers
     $scope.edit = function (index) {
         //use routeProvider to go to edit view, pass customerID or index
         // $state.go('editCustomer');
-        console.log(index);
         $state.go('createCustomer', 
         	
         	{ index: index });

@@ -15,7 +15,7 @@ var customers = angular.module("customers",['ui.router','ui.bootstrap']);
 // 	.otherwise({ redirectTo:'/' })
 // })
 
-customers.config(function($stateProvider){
+customers.config(function($stateProvider,$urlRouterProvider){
 	$stateProvider
 	  .state('createCustomer', {
       url: '/',
@@ -26,7 +26,7 @@ customers.config(function($stateProvider){
 			}
     })
     
-    .state('viewCustomer', {
+    .state('viewCustomers', {
       url: '/viewCustomers',
       templateUrl: 'view/view-customers.html',
       controller: 'viewCustomersController',
