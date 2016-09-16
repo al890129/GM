@@ -31,7 +31,8 @@ customers.config(function($stateProvider,$urlRouterProvider){
       templateUrl: 'view/view-customers.html',
       controller: 'viewCustomersController',
       params: {
-				'index': ""
+				'index': "",
+        'customerArray': ""
 			}
     })
 
