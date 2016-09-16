@@ -1,43 +1,52 @@
-
 customers
-.controller('createCustomerController', function($scope) {
-  	console.log('in creatCustomerController?');
-    $scope.customers = [];
+.controller('createCustomerController', function($scope,$uibModal,$stateParams) {
+  	$scope.customers = [];
     $scope.validInput = false;
-    
-    $scope.register = function (customer) {
-    	var customer = {
-    		email: $scope.email,
-    		firstname: $scope.firstname,
-    		lastname: $scope.lastname,
-    		phonenumber: $scope.phonenumber,
-    		address: $scope.address
-    	};
+    $scope.isEdit = $stateParams.index ? true : false;
 
-    	$scope.customers.push(customer);
-    	storage.setItem(savedCustomers, $scope.customers);
-    	console.log('$scope.customers? ', $scope.customers);
+    console.log($stateParams.index)
+
+    $scope.register = function (customer) {
+        if (typeof(Storage) !== "undefined") {
+
+            var customer = {
+                email: $scope.email,
+                firstname: $scope.firstname,
+                lastname: $scope.lastname,
+                phonenumber: $scope.phonenumber,
+                address: $scope.address
+            };
+
+            $scope.customers.push(customer);
+            localStorage.setItem("savedCustomers", JSON.stringify($scope.customers));
+
+            console.log('$scope.customers? ', JSON.parse(localStorage.getItem("savedCustomers")));
+        }else{
+            console.log('localStorage not available');
+        }
+
+        var modalInstance = $uibModal.open({
+            templateUrl: 'view/customer-modal.html',
+            controller: 'customerModalController',
+        });
     };
 
-    function validEmail (email) {
-        console.log("a")
-    	var regex = /^[a-zA-Z0-9!#$%&\'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&\'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/;
-        var goodEmail = regex.test(email);
-    	if(email && goodEmail) {
-    		return true;
-    	} else {
-    		return false;
-    	}
+    $scope.validEmail =function () {
+        var regex = /^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$/;
+            if(regex.test($scope.email)) {
+                console.log('valid email');
+                return true;
+            } else {
+                console.log('not valid email');
+                return false;
+            }
     }
 
-    function validPhonenumber () {
-
+    if($scope.validEmail() && $scope.firstname && $scope.lastname) {
+        $scope.validInput = true;
+        console.log('validInput!!!', $scope.validInput);
+    } else{
+      console.log('invalid????', $scope.validInput);  
     }
-
-    if(validEmail($scope.email) && $scope.firstname && $scope.lastname) {
-    	$scope.validInput = true;
-    }
-
-    
 
 });

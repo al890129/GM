@@ -1,15 +1,14 @@
 <form>
   <div class="form-group">
-    <label for="email" class="required">Email</label>
-    <input type="text" class="form-control" id="email" ng-model='email' ng-keyup="validEmail()" placeholder="Enter Email">
-    <p ng-if="!validEmail()">Not a valid email</p>
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email" ng-model='email' placeholder="Enter Email">
   </div>
   <div class="form-group">
-    <label for="firstname" class="required">First Name</label>
-    <input type="text" class="form-control" id="firstname" ng-model='firstname' placeholder="Enter First Name">
+    <label for="firstname">First Name</label>
+    <input type="text" class="form-control" id="firstname" ng-model='firstname' placeholder="Enter First Name" ng-keyup="validEmail()">
   </div>
   <div class="form-group">
-    <label for="lastname" class="required">Last Name</label>
+    <label for="lastname">Last Name</label>
     <input type="text" class="form-control" id="lastname" ng-model='lastname' placeholder="Enter Last Name">
   </div>
   <div class="form-group">
@@ -20,5 +19,5 @@
     <label for="address">Address</label>
     <input type="text" class="form-control" id="address" ng-model='address' placeholder="Enter Address">
   </div>
-  <button type="submit" class="btn btn-primary" ng-disabled="!validInput" ng-click="register()">Register</button>
+  <button type="submit" class="btn btn-primary" ng-disabled="validInput" ng-click="register()">Register</button>
 </form>

@@ -6,3 +6,12 @@ form {
   form .form-group .required:after {
     content: " *";
     color: red; }
+
+.modal-select-button {
+  padding: 32px; }
+  .modal-select-button button:first-child {
+    margin-right: 40px; }
+
+.modal-cancle-button {
+  text-align: right;
+  padding: 30px; }
