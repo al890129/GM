@@ -1,18 +1,21 @@
 <section>
   <header>New Customer</header>
-  <form id="customerForm">
+  <form id="customerForm" name="customerForm">
     <div class="form-group">
       <label for="email" class="required">Email</label>
       <input type="text" class="form-control" id="email" ng-model='email' placeholder="Enter Email">
     </div>
-    <p class="alert alert-danger">Invalid Email</p>
+    <p class="alert alert-danger" ng-show="!validEmail()">Invalid Email</p>
+
+
+
     <div class="form-group">
       <label for="firstname" class="required">First Name</label>
-      <input type="text" class="form-control" id="firstname" ng-model='firstname' placeholder="Enter First Name" ng-keyup="validEmail()">
+      <input type="text" class="form-control" id="firstname" ng-model='firstname' placeholder="Enter First Name" required>
     </div>
     <div class="form-group">
       <label for="lastname" class="required">Last Name</label>
-      <input type="text" class="form-control" id="lastname" ng-model='lastname' placeholder="Enter Last Name">
+      <input type="text" class="form-control" id="lastname" ng-model='lastname' placeholder="Enter Last Name" required>
     </div>
     <div class="form-group">
       <label for="phonenumber">Phone Number</label>
@@ -22,7 +25,7 @@
       <label for="address">Address</label>
       <input type="text" class="form-control" id="address" ng-model='address' placeholder="Enter Address">
     </div>
-    <button type="submit" class="btn btn-primary" ng-disabled="validInput" ng-click="buttonCallback()">{{buttonlabel}}</button>
+    <button type="submit" class="btn btn-primary" ng-disabled="!validInput()" ng-click="buttonCallback()">{{buttonlabel}}</button>
   </form>
 </section>
 
