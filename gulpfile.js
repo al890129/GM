@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var connect = require('gulp-connect');
+var server = require('gulp-server-livereload');
 
 gulp.task('sass', function () {
   return gulp.src('./style/sass/**/*.scss')
@@ -10,18 +10,20 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./style/css'));
 });
 
-gulp.task('connect', function() {
-  connect.server({
-    root: '.',
-    livereload: true
-  })
+gulp.task('webserver', function() {
+  gulp.src('')
+    .pipe(server({
+      livereload: true,
+      directoryListing: false,
+      open: true,
+    }));
 });
 
 gulp.task('sass:watch', function () {
   gulp.watch('./style/sass/**/*.scss', ['sass']);
 });
 
-gulp.task('default',['sass','connect','sass:watch'])
+gulp.task('default',['sass','webserver','sass:watch'])
 
 
 

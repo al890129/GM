@@ -1,4 +1,4 @@
-
+//Controller for customer modal
 customers
   .controller('customerModalController', function($scope,$uibModalInstance,$state) {   
   	$scope.close = function() {
@@ -6,10 +6,7 @@ customers
   	}
 
   	$scope.viewCustomers = function() {
-	
-
 		$state.go('viewCustomers');
-
 		$uibModalInstance.dismiss('cancel');
   	}
 

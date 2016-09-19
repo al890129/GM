@@ -1,3 +1,4 @@
+<!-- Template for add customer page -->
 <section>
   <header>New Customer</header>
   <form id="customerForm" name="customerForm">
@@ -5,10 +6,6 @@
       <label for="email" class="required">Email</label>
       <input type="text" class="form-control" id="email" ng-model='email' placeholder="Enter Email">
     </div>
-    <p class="alert alert-danger" ng-show="!validEmail()">Invalid Email</p>
-
-
-
     <div class="form-group">
       <label for="firstname" class="required">First Name</label>
       <input type="text" class="form-control" id="firstname" ng-model='firstname' placeholder="Enter First Name" required>

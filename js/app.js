@@ -1,20 +1,7 @@
+//Create the module for the entire AngularJS app.
 var customers = angular.module("customers",['ui.router','ui.bootstrap']);
 
-// customers.config(function($routeProvider,$locationProvider){
-// 	$routeProvider
-// 	.when('/',
-// 		{
-// 			controller: 'createCustomerController',
-// 			templateUrl: 'view/create-customer.html'
-// 		})
-// 	.when('/viewCustomers/',
-// 		{
-// 			controller: 'viewCustomersController',
-// 			templateUrl: 'view/view-customers.html'
-// 		})
-// 	.otherwise({ redirectTo:'/' })
-// })
-
+//Define the single page applicaion with stateProvider service navigate to different view.
 customers.config(function($stateProvider,$urlRouterProvider){
 	$stateProvider
 	  .state('createCustomer', {
@@ -22,7 +9,7 @@ customers.config(function($stateProvider,$urlRouterProvider){
       controller: 'createCustomerController',
       templateUrl: 'view/create-customer.html',
       params: {
-				'index': ""
+				'index': -1,
 			}
     })
     
@@ -35,15 +22,10 @@ customers.config(function($stateProvider,$urlRouterProvider){
         'customerArray': ""
 			}
     })
-
     $urlRouterProvider.otherwise('/');
 })
 
-
-customers.run(function($location) {
-	$location.url('/')
-})
-
+//Name the host controller and injected it to index.html page
 customers.controller("customer-controller",function(){
 
 })
